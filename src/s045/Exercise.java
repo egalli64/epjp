@@ -47,7 +47,7 @@ public class Exercise {
         for (int i = 0; i < s.length(); i++) {
             char cur = s.charAt(i);
             if (cur >= 'a' && cur <= 'z') {
-                sb.insert(i, cur);
+                sb.insert(i, (char)(cur-GAP));
             } else {
                 sb.insert(i, cur);                
             }
