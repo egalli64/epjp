@@ -7,7 +7,7 @@ drop table if exists regions;
 
 create table regions(
 	region_id integer
-		primary key auto_increment, 
+		primary key auto_increment,
 	region_name varchar(25)
 );
 
