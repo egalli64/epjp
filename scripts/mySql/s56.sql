@@ -1,4 +1,4 @@
--- create table wit constraints
+-- create table with constraints
 create table details (
     detail_id integer primary key
         constraint detail_id_ck check (mod(detail_id, 2) = 1),
