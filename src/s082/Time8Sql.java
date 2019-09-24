@@ -18,7 +18,7 @@ public class Time8Sql {
         System.out.println("Converted to LocalTime: " + time.toLocalTime());
         
         Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
-        System.out.println("Sql Timestamp" + ts);
+        System.out.println("Sql Timestamp: " + ts);
         System.out.println("Converted to LocalDateTime: " + ts.toLocalDateTime());
         System.out.println("Converted to Instant: " + ts.toInstant());
     }
