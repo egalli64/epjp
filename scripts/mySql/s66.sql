@@ -13,7 +13,7 @@ begin
 	from coders;
     
 	if v_total > 0 then
-		select concat("total salary for coders: ", v_total) as message;
+		select v_total as "total salary for coders";
 	else
 		select "no salary information available for coders!" as warning;
 	end if;
