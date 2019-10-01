@@ -1,25 +1,22 @@
--- create table with constraints
-create table details (
-    detail_id integer primary key
-        constraint detail_id_ck check (mod(detail_id, 2) = 1),
---    detail_id integer primary key auto_increment,
-    status char default 'A'
-        constraint detail_status_ck check (status in ('A', 'B', 'X')),
---	status enum('A', 'B', 'X') default 'A',
-    name varchar(20),
---   name varchar(20) not null,
---	 name varchar(20) unique,
+-- alter table
 
-    coder_id integer references coders(coder_id),
---    coder_id integer references coders(coder_id) on delete cascade,
---    coder_id integer references coders(coder_id) on delete set null,
-        
-    constraint detail_name_status_uq unique(name, status)
-);
+-- add/drop column from table
+alter table items add counter decimal(38, 0);
+alter table items drop column counter;
 
--- when in doubt, do not run the next line
-drop table details;
+-- add check
+alter table items add constraint items_status_ck check(status in ('A', 'B', 'X'));
 
-insert into details values();
+-- add unique
+alter table coders add constraint coders_name_uq unique(first_name, last_name);
 
-select * from details;
+-- add pk
+alter table coders add constraint primary key(coder_id);
+alter table coders modify coder_id int primary key;
+
+-- drop pk
+alter table coders drop primary key;
+
+-- add pk w/ autoincrement
+alter table coders modify coder_id int primary key auto_increment;
+alter table coders change coder_id coder_id int primary key auto_increment;

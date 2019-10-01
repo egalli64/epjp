@@ -1,9 +1,8 @@
--- index on a column
-create index coders_last_name_ix on coders(last_name);
+-- get rid of all rows (DML)
+delete from details;
 
--- index on more columns
-create index coders_name_ix on coders(first_name, last_name);
+-- get rid of all rows (DDL)
+truncate table details;
 
--- get rid of indices
-drop index coders_last_name_ix on coders;
-drop index coders_name_ix on coders;
+-- get rid of the table (DDL)
+drop table details;

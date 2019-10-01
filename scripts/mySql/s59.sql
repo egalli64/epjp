@@ -1,7 +1,9 @@
--- create view
-create or replace view odd_coders_view as
-select * from coders
-where mod(coder_id, 2) = 1;
+-- index on a column
+create index coders_last_name_ix on coders(last_name);
 
--- get rid of a view
-drop view odd_coders_view;
+-- index on more columns
+create index coders_name_ix on coders(first_name, last_name);
+
+-- get rid of indices
+drop index coders_last_name_ix on coders;
+drop index coders_name_ix on coders;

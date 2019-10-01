@@ -1,33 +1,24 @@
 use me;
 
-drop procedure if exists email_coders;
+drop procedure if exists total_salaries_coders;
 
 delimiter //
 
-create procedure email_coders()
+create procedure total_salaries_coders()
 begin
-	declare v_done boolean default false;
-	declare v_first_name varchar(20);
-	declare v_last_name varchar(25);
-	declare v_mailing_list varchar(1000) default '';
-
-	declare cur_coders cursor for
-		select first_name, last_name from coders;
-	declare continue handler for not found
-		set v_done = true;
-
-	open cur_coders;
-	while not v_done do
-		fetch cur_coders into v_first_name, v_last_name;
-		set v_mailing_list = concat(v_mailing_list,
-			lower(v_first_name), "." , lower(v_last_name), "@x.dd;");
-	end while;
-
-	select v_mailing_list as "mailing list";
-
-    close cur_coders;
+	declare v_total decimal(8, 2);
+    
+	select sum(salary)
+	into v_total
+	from coders;
+    
+	if v_total > 0 then
+		select v_total as "total salary for coders";
+	else
+		select "no salary information available for coders!" as warning;
+	end if;
 end;
 
 // delimiter ;
 
-call email_coders();
+call total_salaries_coders();

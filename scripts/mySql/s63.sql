@@ -1,18 +1,13 @@
 
-drop procedure if exists variable_example;
+drop procedure if exists hello;
 
 delimiter //
 
-create procedure variable_example()
+create procedure hello()
 begin
-	declare v_a varchar(20);
-	declare v_b int default 42;
-
-	set v_a = "hello";
-
-	select concat(v_a, ": ", v_b) as greetings;
+	select "Hello!" as greetings;
 end;
 
 // delimiter ;
 
-call variable_example();
+call hello();

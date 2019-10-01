@@ -1,43 +1,36 @@
 
-drop procedure if exists loop_example;
+drop procedure if exists condition_example;
 
 delimiter //
 
-create procedure loop_example()
+create procedure condition_example()
 begin
-	declare v_i integer;
-	declare loop_message varchar(20) default "i: ";
-	declare while_message varchar(20) default "i: ";
-	declare repeat_message varchar(20) default "i: ";
+	declare v_a integer default 1;
+	declare v_b varchar(20);
 	declare v_c varchar(20);
 
-	-- plain loop
-	set v_i = 1;
-	my_loop : loop
-		set loop_message = concat(loop_message, ' ', v_i);
-        set v_i = v_i + 1;
-        if v_i > 6 then
-			leave my_loop;
-		end if;
-    end loop my_loop;
+	if v_a > 0 then
+		set v_b = 'v_a is positive';
+	elseif v_a = 0 then
+		set v_b = 'v_a is zero';
+	else
+		set v_b = 'v_a is negative';
+	end if;
 
-	-- loop while
-	set v_i = 1;
-	while v_i < 7 do
-		set while_message = concat(while_message, ' ', v_i);
-        set v_i = v_i + 1;
-    end while;
+	case v_a
+		when -1 then
+			set v_c = 'v_a is minus one';
+		when 0 then
+			set v_c = 'v_a is zero';
+		when 1 then
+			set v_c = 'v_a is plus one';
+		else
+			set v_c = 'v_a is unknown';
+	end case;
 
-	-- loop repeat until
-	set v_i = 1;
-	repeat
-		set repeat_message = concat(repeat_message, ' ', v_i);
-        set v_i = v_i + 1;
-	until v_i > 6 end repeat;
-
-	select loop_message as 'plain loop', while_message as 'loop while', repeat_message as 'repeat until';
+	select v_b as 'if message', v_c as 'switch message';
 end;
 
 // delimiter ;
 
-call loop_example();
+call condition_example();
