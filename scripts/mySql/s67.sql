@@ -13,7 +13,7 @@ begin
 	from coders;
     
 	if v_total > 0 then
-		select v_total as "total salary for coders";
+		select v_total as "total salaries";
 	else
 		select "no salary information available for coders!" as warning;
 	end if;
