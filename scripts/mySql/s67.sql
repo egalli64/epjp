@@ -1,3 +1,5 @@
+-- procedure with local variable, select into, if-else
+
 use me;
 
 drop procedure if exists total_salaries_coders;

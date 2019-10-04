@@ -1,3 +1,5 @@
+-- cursor
+
 use me;
 
 drop procedure if exists email_coders;
