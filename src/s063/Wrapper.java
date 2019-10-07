@@ -11,7 +11,7 @@ public class Wrapper {
         System.out.println(Double.class);
 
         // from Java 9 on
-        // @SuppressWarnings("deprecation")
+        @SuppressWarnings("deprecation")
 		Integer i = new Integer(1);
         Integer j = Integer.valueOf(2);
         System.out.println(i + j);
