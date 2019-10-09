@@ -1,5 +1,7 @@
 package s043;
 
+import java.util.Objects;
+
 public class ParameterPassing {
     static void primitive(int parameter) {
         parameter += 1;
@@ -11,6 +13,9 @@ public class ParameterPassing {
             System.out.println("Nothing to do here");
             return;
         }
+
+        // alternatively: if parameter is null throws a NullPointerException
+        Objects.requireNonNull(parameter, "Parameter should not be null");
 
         System.out.println("parameter id was " + System.identityHashCode(parameter));
         parameter += " there";
@@ -24,6 +29,9 @@ public class ParameterPassing {
             return;
         }
 
+        // alternatively: if parameter is null throws a NullPointerException
+        Objects.requireNonNull(parameter, "Parameter should not be null");
+
         parameter.append(" there");
         System.out.println("parameter value is " + parameter);
     }
@@ -33,6 +41,9 @@ public class ParameterPassing {
             System.out.println("Nothing to do here");
             return;
         }
+
+        // alternatively: if parameter is null throws a NullPointerException
+        Objects.requireNonNull(data, "Parameter should not be null");
 
         data[0] += 1;
         System.out.println("data[0] is " + data[0]);
