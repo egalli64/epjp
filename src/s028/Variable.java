@@ -1,7 +1,5 @@
 package s028;
 
-import java.util.Objects;
-
 public class Variable {
     public static void main(String[] args) {
         int value = 42;
